@@ -11,7 +11,6 @@ def prepare_train(path: str):
     train['Embarked'] = train['Embarked'].fillna(train['Embarked'].mode()[0])
     train['Age'] = train['Age'].fillna(train['Age'].mean())
     train['Relatives'] = train['SibSp'] + train['Parch']
-    train['Relatives'] = train['SibSp'] + train['Parch']
 
 
     sex_categorical_values = {'female': 0, 'male': 1}
