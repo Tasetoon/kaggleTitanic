@@ -11,12 +11,13 @@ def prepare_train(path: str):
     train['Embarked'] = train['Embarked'].fillna(train['Embarked'].mode()[0])
     train['Age'] = train['Age'].fillna(train['Age'].mean())
     train['Relatives'] = train['SibSp'] + train['Parch']
-    train['Relatives'] = train['SibSp'] + train['Parch']
+
+    
 
 
     sex_categorical_values = {'female': 0, 'male': 1}
     embarked_categorical_values = {'S': 0, 'Q':1, 'C':2}
     train['Sex'] = train['Sex'].apply(lambda x: sex_categorical_values[x])
-    train['Embarked'] = train['Embarked'].apply(lambda x: embarked_categorical_values[x])
+    train = pd.get_dummies(train, columns=['Embarked'], drop_first=True, dtype=int)
 
     return train
