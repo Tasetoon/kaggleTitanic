@@ -79,3 +79,7 @@ target/
 
 # Kagent
 .kagent-context/**
+
+# Prediction files
+*prediction_tree.csv
+*submission.csv
