@@ -18,22 +18,13 @@ def prepare_data(path: str):
     train['Embarked'] = train['Embarked'].fillna(train['Embarked'].mode()[0])
     train['Age'] = train['Age'].fillna(train['Age'].mean())
     train['Relatives'] = train['SibSp'] + train['Parch']
-<<<<<<< HEAD
     train['IsChild'] = (train['Age'] < 12).astype(int)
     train['FareLog'] = np.log1p(train['Fare'])
     train['IsAlone'] = (train['Relatives'] == 0).astype(int)
-=======
-
-    
-
->>>>>>> ce1ab0d (decision_tree model)
 
     sex_categorical_values = {'female': 0, 'male': 1}
     train['Sex'] = train['Sex'].apply(lambda x: sex_categorical_values[x])
-<<<<<<< HEAD
     train = pd.get_dummies(train, columns=['Embarked', 'Title'], drop_first=True, dtype=int)
-=======
-    train = pd.get_dummies(train, columns=['Embarked'], drop_first=True, dtype=int)
->>>>>>> ce1ab0d (decision_tree model)
+
 
     return train
