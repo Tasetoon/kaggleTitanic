@@ -26,5 +26,4 @@ def prepare_data(path: str):
     train['Sex'] = train['Sex'].apply(lambda x: sex_categorical_values[x])
     train = pd.get_dummies(train, columns=['Embarked', 'Title'], drop_first=True, dtype=int)
 
-
     return train
