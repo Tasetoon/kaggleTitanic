@@ -1,6 +1,7 @@
 import pandas as pd
+import numpy as np
 
-def prepare_train(path: str):
+def prepare_data(path: str):
     train = pd.read_csv(path, on_bad_lines='skip', na_values='?')
 
     train = train.drop(columns=['PassengerId'])
@@ -11,6 +12,8 @@ def prepare_train(path: str):
     train['Embarked'] = train['Embarked'].fillna(train['Embarked'].mode()[0])
     train['Age'] = train['Age'].fillna(train['Age'].mean())
     train['Relatives'] = train['SibSp'] + train['Parch']
+    train['IsChild'] = (train['Age'] < 12).astype(int)
+    train['FareLog'] = np.log1p(train['Fare'])
 
 
     sex_categorical_values = {'female': 0, 'male': 1}
