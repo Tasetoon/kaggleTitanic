@@ -19,6 +19,7 @@ def prepare_data(path: str):
     train['Age'] = train['Age'].fillna(train['Age'].mean())
     train['Relatives'] = train['SibSp'] + train['Parch']
     train['IsChild'] = (train['Age'] < 12).astype(int)
+    train['Fare'] = train['Fare'].fillna(train['Fare'].median())
     train['FareLog'] = np.log1p(train['Fare'])
     train['IsAlone'] = (train['Relatives'] == 0).astype(int)
 
